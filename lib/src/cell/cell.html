@@ -1,0 +1,13 @@
+<div class="cell-container">
+    <div *ngIf="cell.value != null" class="final">
+        {{ cell.value }}
+    </div>
+    <table *ngIf="cell.value == null">
+        <tr *ngFor="let i of cellIndex">
+            <td *ngFor="let j of cellIndex" [class.empty]="getCandidate(i, j) == '_'">
+                {{ getCandidate(i, j) }}
+            </td>
+        </tr>
+    </table>
+    <div class="highlight" [class.action]="highlight"></div>
+</div>
