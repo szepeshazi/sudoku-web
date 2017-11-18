@@ -1,21 +1,15 @@
-table {
-    max-width: 1024px;
-    border-collapse: collapse;
-    border: 3px solid black;
+:host table {
+  max-width: 1024px;
+  border-collapse: collapse;
+  border: 3px solid black;
 }
-
-tr td {
-    width: 11%;
-    border: 1px solid gray;
+:host table tr td {
+  width: 11%;
+  border: 1px solid gray;
 }
-
-tr td.sectionRight {
-    border-right: 2px solid gray;
+:host table tr.sectionRight {
+  border-right: 2px solid gray;
 }
-
-tr td.sectionBottom {
-    border-bottom: 2px solid gray;
+:host table tr.sectionBottom {
+  border-bottom: 2px solid gray;
 }
-
-
-

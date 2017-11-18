@@ -13,7 +13,7 @@ Future<Null> main(List<String> args) => grind(args);
 @Depends(pubGet)
 Future<Null> start() async {
   var watch = Dart.runAsync(r'tool/sass_watch.dart');
-  var serve = runAsync(sdkBin('pub'), arguments: ['serve', 'web', '--port=8080', '--web-compiler=dart2js']);
+  var serve = runAsync(sdkBin('pub'), arguments: ['serve', 'web', '--port=8080']);
   await Future.wait([watch, serve]);
 }
 
