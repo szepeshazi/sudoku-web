@@ -1,7 +1,5 @@
 :host {
-
     table {
-        max-width: 1024px;
         border-collapse: collapse;
         border: 3px solid black;
 
@@ -9,23 +7,14 @@
             td {
                 width: 11%;
                 border: 1px solid gray;
-            }
+                &.sectionRight {
+                    border-right: 2px solid gray;
+                }
 
-            &.sectionRight {
-                border-right: 2px solid gray;
+                &.sectionBottom {
+                    border-bottom: 2px solid gray;
+                }
             }
-
-            &.sectionBottom {
-                border-bottom: 2px solid gray;
-            }
-
         }
-
     }
-
-
-
 }
-
-
-

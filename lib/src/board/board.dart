@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:angular/angular.dart';
-import 'package:angular_components/angular_components.dart';
 import 'package:sudoku_core/sudoku_core.dart';
 import 'package:sudoku_web/src/cell/cell.dart';
 
@@ -8,8 +7,7 @@ import 'package:sudoku_web/src/cell/cell.dart';
     selector: 'board',
     templateUrl: 'board.html',
     styleUrls: const ['board.css'],
-    directives: const [materialDirectives, NgFor, NgIf, CellComponent],
-    providers: const [materialProviders],
+    directives: const [NgFor, NgIf, CellComponent],
     changeDetection: ChangeDetectionStrategy.OnPush,
     preserveWhitespace: false)
 class BoardComponent {

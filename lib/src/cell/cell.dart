@@ -39,6 +39,6 @@ class CellComponent {
   final List<int> cellIndex = const [0, 1, 2];
   static const int cellSize = 3;
 
-  String getCandidate(i, j) =>
+  String getCandidate(int i, int j) =>
       cell.candidates.firstWhere((cd) => cd == (i* cellSize + j + 1), orElse: () => null)?.toString() ?? '_';
 }

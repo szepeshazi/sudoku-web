@@ -1,5 +1,4 @@
 :host table {
-  max-width: 1024px;
   border-collapse: collapse;
   border: 3px solid black;
 }
@@ -7,9 +6,9 @@
   width: 11%;
   border: 1px solid gray;
 }
-:host table tr.sectionRight {
+:host table tr td.sectionRight {
   border-right: 2px solid gray;
 }
-:host table tr.sectionBottom {
+:host table tr td.sectionBottom {
   border-bottom: 2px solid gray;
 }

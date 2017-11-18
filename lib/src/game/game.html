@@ -1,0 +1,12 @@
+<div class="game-container">
+    <div class="board">
+        <board [board]="board"></board>
+        <div class="progress" *ngIf="inProgress">
+            <material-spinner></material-spinner>
+        </div>
+    </div>
+</div>
+<div class="controls">
+    <material-button raised [disabled]="inProgress">Step</material-button>
+    <material-button raised [disabled]="inProgress">Reset</material-button>
+</div>

@@ -20,6 +20,7 @@
             font-weight: bold;
             text-align: center;
             vertical-align: middle;
+            margin: 0;
             height: 100%;
         }
 
@@ -30,15 +31,17 @@
             right: 0;
             bottom: 0;
             z-index: 100;
-            border: 3px red solid;
-            opacity: 0.5;
+            border: 3px #c82818 solid;
+            opacity: 0.8;
+            transform: scale(0.8, 0.8);
             border-radius: 10%;
-            transition: transform .5s ease-out;
-            display: none;
+            transition: transform .7s ease-out, opacity .7s ease-out;
+            visibility: hidden;
 
             &.action {
-                display: block;
-                transform: scale(1.4, 1.4);
+                visibility: visible;
+                transform: scale(1.5, 1.5);
+                opacity: 0;
             }
         }
     }

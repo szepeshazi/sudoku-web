@@ -24,7 +24,7 @@ void pubGet() {
   for(FileSystemEntity entity in packages) {
     if(entity is File) {
       var packageDir = p.dirname(entity.path);
-      print('Getting for: ${packageDir}');
+      print('Getting for: $packageDir');
       Pub.get(workingDirectory: packageDir);
     }
   }
