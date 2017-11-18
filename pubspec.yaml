@@ -30,7 +30,6 @@ transformers:
     entry_points:
       - web/main.dart
       - test/**_test.dart
-- dart_sass_transformer
 - test/pub_serve:
     $include: test/**_test.dart
 - dart_to_js_script_rewriter

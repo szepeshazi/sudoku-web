@@ -35,6 +35,11 @@ Future<Null> sass() async {
   Dart.run(r'tool/sass_build.dart');
 }
 
+@Task('Compile all SCSS files to CSS and keep watching changes')
+Future<Null> sassWatch() async {
+  Dart.run(r'tool/sass_watch.dart');
+}
+
 @Task('Runs build')
 Future<Null> build() async {
   Pub.get();

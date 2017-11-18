@@ -4,7 +4,7 @@
 :host div.cell-container table tr td {
   padding: 0 5px;
 }
-:host div.cell-container table tr.empty {
+:host div.cell-container table tr td.empty {
   color: white;
 }
 :host div.cell-container div.final {
