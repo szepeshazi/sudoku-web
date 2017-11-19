@@ -24,8 +24,8 @@ class GameComponent implements OnInit {
   @override
   void ngOnInit() {
 
-    board = createFromLiteral(hard);
-    SudokuBoard solvedBoard = createFromLiteral(hard);
+    board = new SudokuBoard.fromLiteral(hard);
+    SudokuBoard solvedBoard = new SudokuBoard.fromLiteral(hard);
 
     _changeDetectorRef.markForCheck();
 
@@ -33,16 +33,6 @@ class GameComponent implements OnInit {
     final steps = game.solve(solvedBoard);
     _changeDetectorRef.markForCheck();
     inProgress = false;
-  }
-
-  SudokuBoard createFromLiteral(List<List<int>> boardDefinition) {
-    SudokuBoard thisBoard = new SudokuBoard();
-
-    List<List<SudokuCell>> transformedRows =
-    hard.map((row) => row.map((value) => new SudokuCell()..value = value)).toList();
-    thisBoard.rows = transformedRows;
-
-    return thisBoard;
   }
 
 }

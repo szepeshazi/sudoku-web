@@ -1,4 +1,4 @@
-<table *ngIf="ready">
+<table *ngIf="board != null">
     <tr *ngFor="let row of board.rows; let i = index">
         <td *ngFor="let cell of row; let j = index"
             [class.sectionBottom]="i % 3 == 2"
