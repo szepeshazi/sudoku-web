@@ -3,7 +3,7 @@
         <td *ngFor="let cell of row; let j = index"
             [class.sectionBottom]="i % 3 == 2"
             [class.sectionRight]="j % 3 == 2">
-            <cell [cell]="cell" [highlight]="isHighlighted(i,j)"></cell>
+            <cell [cell]="cell" [highlight]="isHighlighted(i,j)" [mark]="isRelated(i,j)"></cell>
         </td>
     </tr>
 </table>

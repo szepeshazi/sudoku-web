@@ -22,12 +22,15 @@
   right: 0;
   bottom: 0;
   z-index: 100;
-  border: 3px #c82818 solid;
   opacity: 0.8;
+  border: 3px #288818 solid;
   transform: scale(0.8, 0.8);
   border-radius: 10%;
   transition: transform 0.7s ease-out, opacity 0.7s ease-out;
   visibility: hidden;
+}
+:host div.cell-container div.highlight.red {
+  border: 3px #c82818 solid;
 }
 :host div.cell-container div.highlight.action {
   visibility: visible;

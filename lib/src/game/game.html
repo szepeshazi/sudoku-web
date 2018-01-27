@@ -1,12 +1,22 @@
 <div class="game-container">
     <div class="board">
-        <board [board]="board"></board>
+        <board [board]="board" [currentStep]="currentStep"></board>
         <div class="progress" *ngIf="inProgress">
             <material-spinner></material-spinner>
         </div>
     </div>
 </div>
 <div class="controls">
-    <material-button raised [disabled]="inProgress">Step</material-button>
-    <material-button raised [disabled]="inProgress">Reset</material-button>
+    <material-button icon [disabled]="inProgress" (trigger)="back()">
+        <material-icon class="large" icon="skip_previous"></material-icon>
+    </material-button>
+    <material-button *ngIf="isPlaying" icon [disabled]="inProgress" (trigger)="pause()">
+        <material-icon class="large" icon="pause"></material-icon>
+    </material-button>
+    <material-button *ngIf="!isPlaying" icon [disabled]="inProgress" (trigger)="play()">
+        <material-icon class="large" icon="play_arrow"></material-icon>
+    </material-button>
+    <material-button icon [disabled]="inProgress" (trigger)="forward()">
+        <material-icon class="large" icon="skip_next"></material-icon>
+    </material-button>
 </div>

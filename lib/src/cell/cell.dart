@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:angular/angular.dart';
 import 'package:angular_components/angular_components.dart';
 import 'package:sudoku_core/sudoku_core.dart';
@@ -14,6 +15,7 @@ class CellComponent {
 
   SudokuCell _cell;
   bool _highlight = false;
+  bool _mark = false;
   ChangeDetectorRef _changeDetectionRef;
 
   CellComponent(this._changeDetectionRef);
@@ -35,6 +37,16 @@ class CellComponent {
   }
 
   bool get highlight => _highlight;
+
+  @Input()
+  set mark(bool newValue) {
+    if (newValue != _mark) {
+      _mark = newValue;
+      _changeDetectionRef.markForCheck();
+    }
+  }
+
+  bool get mark => _mark;
 
   final List<int> cellIndex = const [0, 1, 2];
   static const int cellSize = 3;

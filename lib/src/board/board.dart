@@ -13,7 +13,6 @@ import 'package:sudoku_web/src/cell/cell.dart';
 class BoardComponent {
   final ChangeDetectorRef _changeDetectionRef;
   SudokuBoard _board;
-  List<EliminationResult> _step;
 
   BoardComponent(this._changeDetectionRef);
 
@@ -21,25 +20,28 @@ class BoardComponent {
   set board(SudokuBoard newValue) {
     _board = newValue;
     _changeDetectionRef.markForCheck();
-    anim();
   }
 
   SudokuBoard get board => _board;
 
+  EliminationResult _currentStep;
+  List<CellLocation> relatedCells;
+
   @Input()
-  set step(List<EliminationResult> eliminations) {
-    _step = eliminations;
-  }
-
-  bool state = false;
-
-  bool isHighlighted(int i, int j) => (state && i == 5 && j == 5);
-
-  Future anim() async {
-    Completer completer = new Completer<bool>();
-    new Timer(new Duration(seconds: 1), () => completer.complete(true));
-    await completer.future;
-    state = true;
+  set currentStep(EliminationResult newValue) {
+    _currentStep = newValue;
+    relatedCells = _currentStep.offendingLocations;
+    board.elementAt(_currentStep.location).removeCandidate(_currentStep.value);
     _changeDetectionRef.markForCheck();
+    new Timer(new Duration(milliseconds: 800), () {
+      _currentStep = null;
+      relatedCells = null;
+      _changeDetectionRef.markForCheck();
+    });
   }
+
+  bool isHighlighted(int i, int j) => (i == _currentStep?.location?.y && j == _currentStep?.location?.x);
+
+  bool isRelated(int i, int j) =>
+      (relatedCells ?? const <CellLocation>[]).isNotEmpty && relatedCells.any((cell) => i == cell.y && j == cell.x);
 }

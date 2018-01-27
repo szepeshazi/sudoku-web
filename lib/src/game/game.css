@@ -32,3 +32,6 @@ div.controls {
 div.controls material-button {
   margin: 20px;
 }
+div.controls .large ::ng-deep .material-icon-i {
+  font-size: 64px;
+}

@@ -1,3 +1,6 @@
+@import 'package:angular_components/css/material/material';
+@import 'package:angular_components/material_icon/mixins';
+
 div.game-container {
 
   display: flex;
@@ -36,5 +39,9 @@ div.controls {
 
   material-button {
     margin : 20px;
+  }
+
+  .large {
+    @include material-icon-size($mat-grid * 8);
   }
 }
