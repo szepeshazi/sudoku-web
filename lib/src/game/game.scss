@@ -31,14 +31,36 @@ div.game-container {
   }
 }
 
-div.controls {
+div.slider {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+  .bar {
+    position: relative;
+    width: 520px;
+
+    .overlay {
+      position: absolute;
+      top: -3px;
+      left: -12px;
+      cursor: pointer;
+      color: cornflowerblue;
+    }
+    .medium {
+      @include material-icon-size($mat-grid * 4);
+    }
+  }
+}
+
+div.controls {
   display: flex;
   align-items: center;
   justify-content: center;
 
   material-button {
-    margin : 20px;
+    margin: 20px;
   }
 
   .large {

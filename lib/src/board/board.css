@@ -4,6 +4,7 @@
 }
 :host table tr td {
   width: 11%;
+  height: 11%;
   border: 1px solid gray;
 }
 :host table tr td.sectionRight {

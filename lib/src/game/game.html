@@ -6,6 +6,14 @@
         </div>
     </div>
 </div>
+<div class="slider">
+    <div class="bar">
+        <material-progress [activeProgress]="progress"></material-progress>
+        <div class="overlay" #dragButton>
+            <material-icon class="medium" icon="fiber_manual_record"></material-icon>
+        </div>
+    </div>
+</div>
 <div class="controls">
     <material-button icon [disabled]="inProgress || currentStepIndex < 0" (trigger)="back()">
         <material-icon class="large" icon="skip_previous"></material-icon>

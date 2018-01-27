@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:angular/angular.dart';
 import 'package:angular_components/material_button/material_button.dart';
 import 'package:angular_components/material_icon/material_icon.dart';
+import 'package:angular_components/material_progress/material_progress.dart';
 import 'package:angular_components/material_spinner/material_spinner.dart';
 import 'package:sudoku_core/sudoku_core.dart';
 import 'package:sudoku_web/src/board/board.dart';
@@ -16,7 +17,8 @@ import 'package:sudoku_web/src/board/board.dart';
       BoardComponent,
       MaterialButtonComponent,
       MaterialIconComponent,
-      MaterialSpinnerComponent
+      MaterialSpinnerComponent,
+      MaterialProgressComponent
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
     preserveWhitespace: false)
@@ -30,8 +32,12 @@ class GameComponent implements OnInit {
   Timer gameTimer;
 
   int currentStepIndex = -1;
+  int progress = 0;
   bool inProgress = true;
   bool isPlaying = false;
+
+  @ViewChild('dragButton')
+  ElementRef dragButton;
 
   GameComponent(this._changeDetectorRef);
 
@@ -59,6 +65,7 @@ class GameComponent implements OnInit {
       currentStep = null;
       _changeDetectorRef.markForCheck();
     }
+    updateProgress();
   }
 
   void forward() {
@@ -71,6 +78,7 @@ class GameComponent implements OnInit {
       undoCurrentStep = null;
       _changeDetectorRef.markForCheck();
     }
+    updateProgress();
   }
 
   void pause() {
@@ -88,6 +96,13 @@ class GameComponent implements OnInit {
       } else {
         gameTimer.cancel();
       }
+    updateProgress();
     });
+  }
+
+  void updateProgress() {
+    progress = ((currentStepIndex + 1) / (steps?.length ?? 1) * 100).toInt();
+    var offset = (progress * 520 / 100 - 12).toInt();
+    dragButton.nativeElement.style.left = "${offset}px";
   }
 }

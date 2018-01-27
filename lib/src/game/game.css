@@ -24,6 +24,27 @@ div.game-container div.board div.progress material-spinner {
   color: darkgrey;
 }
 
+div.slider {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+div.slider .bar {
+  position: relative;
+  width: 520px;
+}
+div.slider .bar .overlay {
+  position: absolute;
+  top: -3px;
+  left: -12px;
+  cursor: pointer;
+  color: cornflowerblue;
+}
+div.slider .bar .medium ::ng-deep .material-icon-i {
+  font-size: 32px;
+}
+
 div.controls {
   display: flex;
   align-items: center;
