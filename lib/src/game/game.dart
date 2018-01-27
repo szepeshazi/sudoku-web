@@ -26,9 +26,10 @@ class GameComponent implements OnInit {
   SudokuBoard board;
   List<EliminationResult> steps;
   EliminationResult currentStep;
+  EliminationResult undoCurrentStep;
   Timer gameTimer;
 
-  int currentStepIndex = 0;
+  int currentStepIndex = -1;
   bool inProgress = true;
   bool isPlaying = false;
 
@@ -53,8 +54,9 @@ class GameComponent implements OnInit {
       isPlaying = false;
       gameTimer?.cancel();
     }
-    if (--currentStepIndex < steps.length) {
-      currentStep = steps[currentStepIndex];
+    if (currentStepIndex >= 0) {
+      undoCurrentStep = steps[currentStepIndex--];
+      currentStep = null;
       _changeDetectorRef.markForCheck();
     }
   }
@@ -66,6 +68,7 @@ class GameComponent implements OnInit {
     }
     if (++currentStepIndex < steps.length) {
       currentStep = steps[currentStepIndex];
+      undoCurrentStep = null;
       _changeDetectorRef.markForCheck();
     }
   }
@@ -78,9 +81,9 @@ class GameComponent implements OnInit {
   void play() {
     isPlaying = true;
     gameTimer = new Timer.periodic((new Duration(seconds: 1)), (_) {
-      currentStepIndex++;
-      if (currentStepIndex < steps.length) {
+      if (++currentStepIndex < steps.length) {
         currentStep = steps[currentStepIndex];
+        undoCurrentStep = null;
         _changeDetectorRef.markForCheck();
       } else {
         gameTimer.cancel();

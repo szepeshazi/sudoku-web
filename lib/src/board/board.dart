@@ -29,9 +29,28 @@ class BoardComponent {
 
   @Input()
   set currentStep(EliminationResult newValue) {
+    if (newValue == null) return;
     _currentStep = newValue;
     relatedCells = _currentStep.offendingLocations;
     board.elementAt(_currentStep.location).removeCandidate(_currentStep.value);
+    _changeDetectionRef.markForCheck();
+    new Timer(new Duration(milliseconds: 800), () {
+      _currentStep = null;
+      relatedCells = null;
+      _changeDetectionRef.markForCheck();
+    });
+  }
+
+  @Input()
+  set undoCurrentStep(EliminationResult newValue) {
+    if (newValue == null) return;
+    _currentStep = newValue;
+    relatedCells = _currentStep.offendingLocations;
+    if (board.elementAt(_currentStep.location).value != null) {
+      board.elementAt(_currentStep.location).candidates = new Set.from([board.elementAt(_currentStep.location).value]);
+      board.elementAt(_currentStep.location).value == null;
+    }
+    board.elementAt(_currentStep.location).candidates.add(_currentStep.value);
     _changeDetectionRef.markForCheck();
     new Timer(new Duration(milliseconds: 800), () {
       _currentStep = null;
