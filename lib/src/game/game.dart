@@ -105,4 +105,25 @@ class GameComponent implements OnInit {
     var offset = (progress * 520 / 100 - 12).toInt();
     dragButton.nativeElement.style.left = "${offset}px";
   }
+
+  String get currentStepReason {
+    String reason;
+    if (currentStep == null) return '';
+    if (currentStep.reason == EliminationRule.valueInSameRow) {
+      reason = '${currentStep.value} can\'t be at this location as it is already present in the same row.';
+    }
+    if (currentStep.reason == EliminationRule.valueInSameColumn) {
+      reason = '${currentStep.value} can\'t be at this location as it is already present in the same column.';
+    }
+    if (currentStep.reason == EliminationRule.valueInSameSection) {
+      reason = '${currentStep.value} can\'t be at this location as it is already present in the same 3x3 section.';
+    }
+    if (currentStep.reason == EliminationRule.isOtherSingleCandidateInSection) {
+      reason = '${currentStep.value} isOtherSingleCandidateInSection';
+    }
+    if (currentStep.reason == EliminationRule.valueLockedByOtherSection) {
+      reason = '${currentStep.value} valueLockedByOtherSection';
+    }
+    return reason;
+  }
 }

@@ -31,8 +31,17 @@ div.game-container {
   }
 }
 
+div.info {
+  height: 32px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1em;
+}
+
 div.slider {
-  margin-top: 20px;
+  margin-top: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
