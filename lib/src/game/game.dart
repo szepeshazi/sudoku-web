@@ -43,8 +43,8 @@ class GameComponent implements OnInit {
 
   @override
   void ngOnInit() {
-    board = new SudokuBoard.fromLiteral(easy);
-    SudokuBoard solvedBoard = new SudokuBoard.fromLiteral(easy);
+    board = new SudokuBoard.fromLiteral(hard);
+    SudokuBoard solvedBoard = new SudokuBoard.fromLiteral(hard);
 
     _changeDetectorRef.markForCheck();
 

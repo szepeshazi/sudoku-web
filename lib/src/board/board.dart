@@ -47,10 +47,14 @@ class BoardComponent {
     _currentStep = newValue;
     relatedCells = _currentStep.offendingLocations;
     if (board.elementAt(_currentStep.location).value != null) {
-      board.elementAt(_currentStep.location).candidates = new Set.from([board.elementAt(_currentStep.location).value]);
+      board.elementAt(_currentStep.location).candidates = new Set.from([
+        board.elementAt(_currentStep.location).value,
+        _currentStep.value
+      ]);
       board.elementAt(_currentStep.location).value == null;
+    } else {
+      board.elementAt(_currentStep.location).candidates.add(_currentStep.value);
     }
-    board.elementAt(_currentStep.location).candidates.add(_currentStep.value);
     _changeDetectionRef.markForCheck();
     new Timer(new Duration(milliseconds: 800), () {
       _currentStep = null;
