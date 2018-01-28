@@ -27,6 +27,8 @@ class BoardComponent {
   EliminationResult _currentStep;
   List<CellLocation> relatedCells;
 
+  Timer animationTimer;
+
   @Input()
   set currentStep(EliminationResult newValue) {
     if (newValue == null) return;
@@ -34,7 +36,8 @@ class BoardComponent {
     relatedCells = _currentStep.offendingLocations;
     board.elementAt(_currentStep.location).removeCandidate(_currentStep.value);
     _changeDetectionRef.markForCheck();
-    new Timer(new Duration(milliseconds: 800), () {
+    animationTimer?.cancel();
+    animationTimer = new Timer(new Duration(milliseconds: 800), () {
       _currentStep = null;
       relatedCells = null;
       _changeDetectionRef.markForCheck();
@@ -56,7 +59,8 @@ class BoardComponent {
       board.elementAt(_currentStep.location).candidates.add(_currentStep.value);
     }
     _changeDetectionRef.markForCheck();
-    new Timer(new Duration(milliseconds: 800), () {
+    animationTimer?.cancel();
+    animationTimer = new Timer(new Duration(milliseconds: 800), () {
       _currentStep = null;
       relatedCells = null;
       _changeDetectionRef.markForCheck();

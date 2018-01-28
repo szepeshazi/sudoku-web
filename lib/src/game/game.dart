@@ -88,12 +88,13 @@ class GameComponent implements OnInit {
 
   void play() {
     isPlaying = true;
-    gameTimer = new Timer.periodic((new Duration(seconds: 1)), (_) {
+    gameTimer = new Timer.periodic((new Duration(milliseconds: 100)), (_) {
       if (++currentStepIndex < steps.length) {
         currentStep = steps[currentStepIndex];
         undoCurrentStep = null;
         _changeDetectorRef.markForCheck();
       } else {
+        isPlaying = false;
         gameTimer.cancel();
       }
     updateProgress();
