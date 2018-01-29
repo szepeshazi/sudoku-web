@@ -60,6 +60,9 @@ class GameComponent implements OnInit {
       isPlaying = false;
       gameTimer?.cancel();
     }
+    if (currentStepIndex >= steps.length) {
+      currentStepIndex = steps.length - 1;
+    }
     if (currentStepIndex >= 0) {
       undoCurrentStep = steps[currentStepIndex--];
       currentStep = null;
@@ -92,11 +95,11 @@ class GameComponent implements OnInit {
       if (++currentStepIndex < steps.length) {
         currentStep = steps[currentStepIndex];
         undoCurrentStep = null;
-        _changeDetectorRef.markForCheck();
       } else {
         isPlaying = false;
         gameTimer.cancel();
       }
+      _changeDetectorRef.markForCheck();
     updateProgress();
     });
   }
